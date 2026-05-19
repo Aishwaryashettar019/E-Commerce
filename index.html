@@ -1,85 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>E-Commerce Website</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
+
     <!-- Navbar -->
+
     <header>
+
         <div class="logo">
             MyShop
         </div>
+
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Products</a>
-            <a href="#">Cart</a>
-            <a href="#">Contact</a>
+
+            <a href="index.html">Home</a>
+            <a href="cart.html">Cart</a>
+
         </nav>
+
     </header>
 
 
-    <!-- Homepage Section -->
+    <!-- Hero Section -->
 
     <section class="hero">
 
-        <h1>Welcome to My E-Commerce Store</h1>
+        <h1>Welcome To My E-Commerce Store</h1>
+
         <p>
-            Buy the best products at affordable prices.
+            Buy the best products at affordable prices
         </p>
+
         <button>
             Shop Now
         </button>
-<!-- Products Section -->
 
-<section class="products">
-
-    <h2>Featured Products</h2>
-
-   <!-- Search and Filter -->
-
-<div class="controls">
-
-    <input type="text" id="searchInput" placeholder="Search products">
-
-    <select id="categoryFilter">
-
-        <option value="All">All Categories</option>
-        <option value="Electronics">Electronics</option>
-        <option value="Fashion">Fashion</option>
-        <option value="Accessories">Accessories</option>
-
-    </select>
-
-</div>
+    </section>
 
 
-<!-- Products Container -->
+    <!-- Products Section -->
 
-<div class="products-container" id="productsContainer">
+    <section class="products">
 
-</div>
-
-        <!-- Product 1 -->
-
-   
+        <h2>Featured Products</h2>
 
 
-        <!-- Product 2 -->
+        <!-- Search and Filter -->
+
+        <div class="controls">
+
+            <input type="text"
+                   id="searchInput"
+                   placeholder="Search products">
+
+            <select id="categoryFilter">
+
+                <option value="All">All Categories</option>
+
+                <option value="Electronics">
+                    Electronics
+                </option>
+
+                <option value="Fashion">
+                    Fashion
+                </option>
+
+                <option value="Accessories">
+                    Accessories
+                </option>
+
+            </select>
+
+        </div>
 
 
+        <!-- Product Container -->
 
-        <!-- Product 3 -->
+        <div class="products-container"
+             id="productsContainer">
 
-
-         
-
-        <!-- Product 4 -->
-
-      
-
+        </div>
 
     </section>
 
@@ -94,9 +106,10 @@
 
     </footer>
 
-   
-<script src="products.js"></script>
-<script src="script.js"></script>
+
+    <script src="products.js"></script>
+    <script src="script.js"></script>
+
 </body>
 
 </html>

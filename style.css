@@ -237,3 +237,71 @@ footer{
 
     font-size:16px;
 }
+/* Cart Section */
+
+.cart-section{
+
+    padding:50px;
+}
+
+
+.cart-section h2{
+
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+
+/* Cart Item */
+
+.cart-item{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    border:1px solid #ddd;
+
+    padding:20px;
+
+    margin-bottom:20px;
+
+    border-radius:10px;
+}
+
+
+.cart-item button{
+
+    padding:10px 20px;
+
+    border:none;
+
+    background:red;
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:5px;
+}
+
+
+.cart-item button:hover{
+
+    background:black;
+}
+
+
+#cartTotal{
+
+    text-align:right;
+
+    margin-top:30px;
+
+    font-size:28px;
+
+    color:green;
+}
