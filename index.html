@@ -5,7 +5,8 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>E-Commerce Website</title>
 
@@ -26,7 +27,16 @@
         <nav>
 
             <a href="index.html">Home</a>
+
             <a href="cart.html">Cart</a>
+
+            <a href="checkout.html">Checkout</a>
+
+            <button id="darkModeToggle">
+
+                Dark Mode
+
+            </button>
 
         </nav>
 
@@ -37,14 +47,22 @@
 
     <section class="hero">
 
-        <h1>Welcome To My E-Commerce Store</h1>
+        <h1>
+
+            Welcome To My E-Commerce Store
+
+        </h1>
 
         <p>
+
             Buy the best products at affordable prices
+
         </p>
 
         <button>
+
             Shop Now
+
         </button>
 
     </section>
@@ -54,7 +72,11 @@
 
     <section class="products">
 
-        <h2>Featured Products</h2>
+        <h2>
+
+            Featured Products
+
+        </h2>
 
 
         <!-- Search and Filter -->
@@ -65,20 +87,31 @@
                    id="searchInput"
                    placeholder="Search products">
 
+
             <select id="categoryFilter">
 
-                <option value="All">All Categories</option>
+                <option value="All">
+
+                    All Categories
+
+                </option>
 
                 <option value="Electronics">
+
                     Electronics
+
                 </option>
 
                 <option value="Fashion">
+
                     Fashion
+
                 </option>
 
                 <option value="Accessories">
+
                     Accessories
+
                 </option>
 
             </select>
@@ -86,7 +119,7 @@
         </div>
 
 
-        <!-- Product Container -->
+        <!-- Products Container -->
 
         <div class="products-container"
              id="productsContainer">
@@ -96,18 +129,58 @@
     </section>
 
 
+    <!-- Toast Notification -->
+
+    <div id="toast">
+
+        Product Added Successfully
+
+    </div>
+
+
+    <!-- Product Popup Modal -->
+
+    <div class="modal"
+         id="productModal">
+
+        <div class="modal-content">
+
+            <span id="closeModal">
+
+                &times;
+
+            </span>
+
+            <img id="modalImage">
+
+            <h2 id="modalTitle">
+
+            </h2>
+
+            <p id="modalPrice">
+
+            </p>
+
+        </div>
+
+    </div>
+
+
     <!-- Footer -->
 
     <footer>
 
         <p>
+
             © 2026 MyShop | All Rights Reserved
+
         </p>
 
     </footer>
 
 
     <script src="products.js"></script>
+
     <script src="script.js"></script>
 
 </body>

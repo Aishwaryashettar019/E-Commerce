@@ -1,10 +1,13 @@
 // Get Elements
 
-const productsContainer = document.getElementById("productsContainer");
+const productsContainer =
+document.getElementById("productsContainer");
 
-const searchInput = document.getElementById("searchInput");
+const searchInput =
+document.getElementById("searchInput");
 
-const categoryFilter = document.getElementById("categoryFilter");
+const categoryFilter =
+document.getElementById("categoryFilter");
 
 
 // Display Products
@@ -21,7 +24,9 @@ function displayProducts(items){
 
         <div class="product-card">
 
-            <img src="${product.image}" alt="${product.name}">
+            <img src="${product.image}"
+                 alt="${product.name}"
+                 onclick="showProduct(${product.id})">
 
             <h3>${product.name}</h3>
 
@@ -40,7 +45,7 @@ function displayProducts(items){
 }
 
 
-// Homepage Products
+// Initial Products
 
 if(productsContainer){
 
@@ -49,7 +54,7 @@ if(productsContainer){
 }
 
 
-// Search Functionality
+// Search
 
 if(searchInput){
 
@@ -58,7 +63,6 @@ if(searchInput){
         filterProducts();
 
     });
-
 }
 
 
@@ -71,33 +75,32 @@ if(categoryFilter){
         filterProducts();
 
     });
-
 }
 
 
-// Filter Products
+// Filter Function
 
 function filterProducts(){
 
     const searchText =
-        searchInput.value.toLowerCase();
+    searchInput.value.toLowerCase();
 
     const selectedCategory =
-        categoryFilter.value;
+    categoryFilter.value;
 
     const filteredProducts =
-        products.filter(product => {
+    products.filter(product => {
 
         const matchesSearch =
-            product.name
-            .toLowerCase()
-            .includes(searchText);
+        product.name.toLowerCase()
+        .includes(searchText);
 
         const matchesCategory =
-            selectedCategory === "All"
-            || product.category === selectedCategory;
+        selectedCategory === "All"
+        || product.category === selectedCategory;
 
-        return matchesSearch && matchesCategory;
+        return matchesSearch
+        && matchesCategory;
 
     });
 
@@ -106,13 +109,10 @@ function filterProducts(){
 }
 
 
-
-// ============================
 // Shopping Cart
-// ============================
 
 let cart =
-    JSON.parse(localStorage.getItem("cart")) || [];
+JSON.parse(localStorage.getItem("cart")) || [];
 
 
 // Add To Cart
@@ -120,178 +120,21 @@ let cart =
 function addToCart(id){
 
     const selectedProduct =
-        products.find(product => product.id === id);
+    products.find(product => product.id === id);
 
-   const existingProduct =
+    const existingProduct =
     cart.find(item => item.id === id);
 
-if(existingProduct){
+    if(existingProduct){
 
-    existingProduct.quantity += 1;
-
-}
-else{
-
-    selectedProduct.quantity = 1;
-
-    cart.push(selectedProduct);
-
-}
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-
-    alert("Product Added To Cart");
-
-}
-
-
-// Cart Elements
-
-const cartContainer =
-    document.getElementById("cartContainer");
-
-const cartTotal =
-    document.getElementById("cartTotal");
-
-
-// Display Cart
-
-if(cartContainer){
-
-    displayCart();
-
-}
-
-
-function displayCart(){
-
-    cartContainer.innerHTML = "";
-
-    let total = 0;
-
-
-    if(cart.length === 0){
-
-        cartContainer.innerHTML =
-            "<h3>Your cart is empty</h3>";
-
-        cartTotal.innerHTML = "";
-
-        return;
-    }
-
-
-    cart.forEach((item, index) => {
-
-        total += item.price * item.quantity;
-
-        cartContainer.innerHTML += `
-
-        <div class="cart-item">
-
-            <img src="${item.image}"
-                 width="120">
-
-            <div>
-
-                <h3>${item.name}</h3>
-
-              <p>
-    Price: ₹${item.price}
-</p>
-
-<p>
-    Quantity: ${item.quantity}
-</p>
-
-<p>
-    Subtotal:
-    ₹${item.price * item.quantity}
-</p>
-
-               <div class="quantity-buttons">
-
-    <button onclick="decreaseQuantity(${index})">
-
-        -
-
-    </button>
-
-    <button onclick="increaseQuantity(${index})">
-
-        +
-
-    </button>
-
-</div>
-
-<button onclick="removeItem(${index})">
-
-    Remove
-
-</button>
-
-            </div>
-
-        </div>
-
-        `;
-    });
-
-    cartTotal.innerHTML =
-        `Total: ₹${total}`;
-
-}
-
-
-
-// Remove Item
-
-function removeItem(index){
-
-    cart.splice(index, 1);
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-
-    displayCart();
-
-}
-
-// Increase Quantity
-
-function increaseQuantity(index){
-
-    cart[index].quantity += 1;
-
-    localStorage.setItem(
-        "cart",
-        JSON.stringify(cart)
-    );
-
-    displayCart();
-
-}
-
-
-
-// Decrease Quantity
-
-function decreaseQuantity(index){
-
-    if(cart[index].quantity > 1){
-
-        cart[index].quantity -= 1;
+        existingProduct.quantity += 1;
 
     }
     else{
 
-        cart.splice(index, 1);
+        selectedProduct.quantity = 1;
+
+        cart.push(selectedProduct);
 
     }
 
@@ -300,6 +143,79 @@ function decreaseQuantity(index){
         JSON.stringify(cart)
     );
 
-    displayCart();
+    showToast();
+
+}
+
+
+// Toast
+
+function showToast(){
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.style.display = "block";
+
+    setTimeout(() => {
+
+        toast.style.display = "none";
+
+    }, 3000);
+
+}
+
+
+// Product Popup
+
+function showProduct(id){
+
+    const product =
+    products.find(item => item.id === id);
+
+    document.getElementById("productModal")
+    .style.display = "flex";
+
+    document.getElementById("modalImage")
+    .src = product.image;
+
+    document.getElementById("modalTitle")
+    .innerHTML = product.name;
+
+    document.getElementById("modalPrice")
+    .innerHTML = `₹${product.price}`;
+
+}
+
+
+// Close Modal
+
+const closeModal =
+document.getElementById("closeModal");
+
+if(closeModal){
+
+    closeModal.addEventListener("click", () => {
+
+        document.getElementById("productModal")
+        .style.display = "none";
+
+    });
+
+}
+
+
+// Dark Mode
+
+const darkModeToggle =
+document.getElementById("darkModeToggle");
+
+if(darkModeToggle){
+
+    darkModeToggle.addEventListener("click", () => {
+
+        document.body.classList.toggle("dark-mode");
+
+    });
 
 }
