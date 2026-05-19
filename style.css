@@ -455,3 +455,32 @@ footer{
     }
 
 }
+
+/* Buttons */
+
+.buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:10px;
+}
+
+
+/* Wishlist Button */
+
+.wishlist-btn{
+
+    background:red !important;
+}
+
+
+/* Wishlist Empty */
+
+#wishlistContainer h2{
+
+    text-align:center;
+
+    width:100%;
+}

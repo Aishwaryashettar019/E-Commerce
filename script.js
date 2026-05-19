@@ -3,6 +3,9 @@
 const productsContainer =
 document.getElementById("productsContainer");
 
+const wishlistContainer =
+document.getElementById("wishlistContainer");
+
 const searchInput =
 document.getElementById("searchInput");
 
@@ -32,11 +35,22 @@ function displayProducts(items){
 
             <p>₹${product.price}</p>
 
-            <button onclick="addToCart(${product.id})">
+            <div class="buttons">
 
-                Add To Cart
+                <button onclick="addToCart(${product.id})">
 
-            </button>
+                    Add To Cart
+
+                </button>
+
+                <button class="wishlist-btn"
+                        onclick="addToWishlist(${product.id})">
+
+                    ❤️
+
+                </button>
+
+            </div>
 
         </div>
 
@@ -54,7 +68,7 @@ if(productsContainer){
 }
 
 
-// Search
+// Search Functionality
 
 if(searchInput){
 
@@ -63,6 +77,7 @@ if(searchInput){
         filterProducts();
 
     });
+
 }
 
 
@@ -75,10 +90,11 @@ if(categoryFilter){
         filterProducts();
 
     });
+
 }
 
 
-// Filter Function
+// Filter Products
 
 function filterProducts(){
 
@@ -109,7 +125,10 @@ function filterProducts(){
 }
 
 
-// Shopping Cart
+
+// =======================
+// CART
+// =======================
 
 let cart =
 JSON.parse(localStorage.getItem("cart")) || [];
@@ -143,17 +162,136 @@ function addToCart(id){
         JSON.stringify(cart)
     );
 
-    showToast();
+    showToast("Product Added To Cart");
 
 }
 
 
-// Toast
 
-function showToast(){
+// =======================
+// WISHLIST
+// =======================
+
+let wishlist =
+JSON.parse(localStorage.getItem("wishlist")) || [];
+
+
+// Add To Wishlist
+
+function addToWishlist(id){
+
+    const selectedProduct =
+    products.find(product => product.id === id);
+
+    const existingWishlist =
+    wishlist.find(item => item.id === id);
+
+    if(existingWishlist){
+
+        showToast("Already In Wishlist");
+
+        return;
+    }
+
+    wishlist.push(selectedProduct);
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+    showToast("Added To Wishlist ❤️");
+
+}
+
+
+
+// Display Wishlist
+
+if(wishlistContainer){
+
+    displayWishlist();
+
+}
+
+
+function displayWishlist(){
+
+    wishlistContainer.innerHTML = "";
+
+    if(wishlist.length === 0){
+
+        wishlistContainer.innerHTML = `
+
+        <h2>
+
+            Wishlist Is Empty
+
+        </h2>
+
+        `;
+
+        return;
+    }
+
+    wishlist.forEach((item, index) => {
+
+        wishlistContainer.innerHTML += `
+
+        <div class="product-card">
+
+            <img src="${item.image}">
+
+            <h3>${item.name}</h3>
+
+            <p>₹${item.price}</p>
+
+            <button onclick="removeWishlist(${index})">
+
+                Remove
+
+            </button>
+
+        </div>
+
+        `;
+    });
+
+}
+
+
+
+// Remove Wishlist
+
+function removeWishlist(index){
+
+    wishlist.splice(index, 1);
+
+    localStorage.setItem(
+        "wishlist",
+        JSON.stringify(wishlist)
+    );
+
+    displayWishlist();
+
+    showToast("Removed From Wishlist");
+
+}
+
+
+
+// =======================
+// TOAST
+// =======================
+
+function showToast(message){
 
     const toast =
     document.getElementById("toast");
+
+    if(!toast) return;
+
+    toast.innerHTML = message;
 
     toast.style.display = "block";
 
@@ -166,7 +304,10 @@ function showToast(){
 }
 
 
-// Product Popup
+
+// =======================
+// PRODUCT MODAL
+// =======================
 
 function showProduct(id){
 
@@ -188,6 +329,7 @@ function showProduct(id){
 }
 
 
+
 // Close Modal
 
 const closeModal =
@@ -205,7 +347,10 @@ if(closeModal){
 }
 
 
-// Dark Mode
+
+// =======================
+// DARK MODE
+// =======================
 
 const darkModeToggle =
 document.getElementById("darkModeToggle");
