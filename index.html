@@ -38,68 +38,47 @@
 
     <h2>Featured Products</h2>
 
-    <div class="products-container">
+   <!-- Search and Filter -->
+
+<div class="controls">
+
+    <input type="text" id="searchInput" placeholder="Search products">
+
+    <select id="categoryFilter">
+
+        <option value="All">All Categories</option>
+        <option value="Electronics">Electronics</option>
+        <option value="Fashion">Fashion</option>
+        <option value="Accessories">Accessories</option>
+
+    </select>
+
+</div>
+
+
+<!-- Products Container -->
+
+<div class="products-container" id="productsContainer">
+
+</div>
 
         <!-- Product 1 -->
 
-        <div class="product-card">
-
-            <img src="https://via.placeholder.com/250" alt="Laptop">
-
-            <h3>Laptop</h3>
-
-            <p>₹50,000</p>
-
-            <button>Add to Cart</button>
-
-        </div>
+   
 
 
         <!-- Product 2 -->
 
-        <div class="product-card">
-
-            <img src="https://via.placeholder.com/250" alt="Shoes">
-
-            <h3>Shoes</h3>
-
-            <p>₹2,000</p>
-
-            <button>Add to Cart</button>
-
-        </div>
 
 
         <!-- Product 3 -->
 
-        <div class="product-card">
 
-            <img src="https://via.placeholder.com/250" alt="Phone">
-
-            <h3>Phone</h3>
-
-            <p>₹25,000</p>
-
-            <button>Add to Cart</button>
-
-        </div>
-
+         
 
         <!-- Product 4 -->
 
-        <div class="product-card">
-
-            <img src="https://via.placeholder.com/250" alt="Watch">
-
-            <h3>Watch</h3>
-
-            <p>₹3,500</p>
-
-            <button>Add to Cart</button>
-
-        </div>
-
-    </div>
+      
 
 
     </section>
@@ -115,8 +94,9 @@
 
     </footer>
 
-    <script src="script.js"></script>
-
+   
+<script src="products.js"></script>
+<script src="script.js"></script>
 </body>
 
 </html>
