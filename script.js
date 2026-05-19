@@ -1,4 +1,6 @@
-// Get Elements
+// =======================
+// ELEMENTS
+// =======================
 
 const productsContainer =
 document.getElementById("productsContainer");
@@ -13,7 +15,10 @@ const categoryFilter =
 document.getElementById("categoryFilter");
 
 
-// Display Products
+
+// =======================
+// DISPLAY PRODUCTS
+// =======================
 
 function displayProducts(items){
 
@@ -59,8 +64,6 @@ function displayProducts(items){
 }
 
 
-// Initial Products
-
 if(productsContainer){
 
     displayProducts(products);
@@ -68,7 +71,10 @@ if(productsContainer){
 }
 
 
-// Search Functionality
+
+// =======================
+// SEARCH + FILTER
+// =======================
 
 if(searchInput){
 
@@ -81,8 +87,6 @@ if(searchInput){
 }
 
 
-// Category Filter
-
 if(categoryFilter){
 
     categoryFilter.addEventListener("change", () => {
@@ -93,8 +97,6 @@ if(categoryFilter){
 
 }
 
-
-// Filter Products
 
 function filterProducts(){
 
@@ -134,8 +136,6 @@ let cart =
 JSON.parse(localStorage.getItem("cart")) || [];
 
 
-// Add To Cart
-
 function addToCart(id){
 
     const selectedProduct =
@@ -162,7 +162,7 @@ function addToCart(id){
         JSON.stringify(cart)
     );
 
-    showToast("Product Added To Cart");
+    showToast("Added To Cart");
 
 }
 
@@ -175,8 +175,6 @@ function addToCart(id){
 let wishlist =
 JSON.parse(localStorage.getItem("wishlist")) || [];
 
-
-// Add To Wishlist
 
 function addToWishlist(id){
 
@@ -206,7 +204,9 @@ function addToWishlist(id){
 
 
 
-// Display Wishlist
+// =======================
+// DISPLAY WISHLIST
+// =======================
 
 if(wishlistContainer){
 
@@ -259,9 +259,6 @@ function displayWishlist(){
 
 }
 
-
-
-// Remove Wishlist
 
 function removeWishlist(index){
 
@@ -329,11 +326,9 @@ function showProduct(id){
 }
 
 
-
-// Close Modal
-
 const closeModal =
 document.getElementById("closeModal");
+
 
 if(closeModal){
 
@@ -354,6 +349,7 @@ if(closeModal){
 
 const darkModeToggle =
 document.getElementById("darkModeToggle");
+
 
 if(darkModeToggle){
 
