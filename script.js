@@ -122,7 +122,21 @@ function addToCart(id){
     const selectedProduct =
         products.find(product => product.id === id);
 
+   const existingProduct =
+    cart.find(item => item.id === id);
+
+if(existingProduct){
+
+    existingProduct.quantity += 1;
+
+}
+else{
+
+    selectedProduct.quantity = 1;
+
     cart.push(selectedProduct);
+
+}
 
     localStorage.setItem(
         "cart",
@@ -172,7 +186,7 @@ function displayCart(){
 
     cart.forEach((item, index) => {
 
-        total += item.price;
+        total += item.price * item.quantity;
 
         cartContainer.innerHTML += `
 
@@ -185,13 +199,40 @@ function displayCart(){
 
                 <h3>${item.name}</h3>
 
-                <p>₹${item.price}</p>
+              <p>
+    Price: ₹${item.price}
+</p>
 
-                <button onclick="removeItem(${index})">
+<p>
+    Quantity: ${item.quantity}
+</p>
 
-                    Remove
+<p>
+    Subtotal:
+    ₹${item.price * item.quantity}
+</p>
 
-                </button>
+               <div class="quantity-buttons">
+
+    <button onclick="decreaseQuantity(${index})">
+
+        -
+
+    </button>
+
+    <button onclick="increaseQuantity(${index})">
+
+        +
+
+    </button>
+
+</div>
+
+<button onclick="removeItem(${index})">
+
+    Remove
+
+</button>
 
             </div>
 
@@ -212,6 +253,47 @@ function displayCart(){
 function removeItem(index){
 
     cart.splice(index, 1);
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    displayCart();
+
+}
+
+// Increase Quantity
+
+function increaseQuantity(index){
+
+    cart[index].quantity += 1;
+
+    localStorage.setItem(
+        "cart",
+        JSON.stringify(cart)
+    );
+
+    displayCart();
+
+}
+
+
+
+// Decrease Quantity
+
+function decreaseQuantity(index){
+
+    if(cart[index].quantity > 1){
+
+        cart[index].quantity -= 1;
+
+    }
+    else{
+
+        cart.splice(index, 1);
+
+    }
 
     localStorage.setItem(
         "cart",

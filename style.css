@@ -305,3 +305,108 @@ footer{
 
     color:green;
 }
+
+/* Checkout Section */
+
+.checkout-section{
+
+    padding:60px 20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+}
+
+
+.checkout-form{
+
+    width:100%;
+
+    max-width:500px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+}
+
+
+.checkout-form input{
+
+    padding:15px;
+
+    border:1px solid #ccc;
+
+    border-radius:5px;
+
+    font-size:16px;
+}
+
+
+.checkout-form button{
+
+    padding:15px;
+
+    border:none;
+
+    background:green;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    border-radius:5px;
+}
+
+
+/* Checkout Button */
+
+.checkout-btn{
+
+    margin-top:20px;
+
+    padding:15px 25px;
+
+    border:none;
+
+    background:green;
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:5px;
+
+    font-size:18px;
+}
+
+
+/* Quantity Buttons */
+
+.quantity-buttons{
+
+    margin:10px 0;
+}
+
+
+.quantity-buttons button{
+
+    padding:8px 15px;
+
+    margin-right:10px;
+
+    border:none;
+
+    background:orange;
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:5px;
+}
