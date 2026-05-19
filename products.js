@@ -5,7 +5,7 @@ const products = [
         name:"Laptop",
         category:"Electronics",
         price:50000,
-        image:"https://via.placeholder.com/250"
+        image:"images/laptop.jpg"
     },
 
     {
@@ -13,7 +13,7 @@ const products = [
         name:"Shoes",
         category:"Fashion",
         price:2000,
-        image:"https://via.placeholder.com/250"
+        image:"images/shoes.jpg"
     },
 
     {
@@ -21,7 +21,7 @@ const products = [
         name:"Phone",
         category:"Electronics",
         price:25000,
-        image:"https://via.placeholder.com/250"
+        image:"images/phone.jpg"
     },
 
     {
@@ -29,7 +29,7 @@ const products = [
         name:"Watch",
         category:"Accessories",
         price:3500,
-        image:"https://via.placeholder.com/250"
+        image:"images/watch.jpg"
     }
 
 ];
